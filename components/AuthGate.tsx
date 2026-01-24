@@ -9,6 +9,19 @@ type AuthGateProps = {
 const STORAGE_KEY = "buzzcut.auth";
 const KEYCLOAK_AUTH_URL = process.env.NEXT_PUBLIC_KEYCLOAK_AUTH_URL;
 
+function mockAuthFromCode() {
+  const url = new URL(window.location.href);
+  const code = url.searchParams.get("code");
+  if (!code) return false;
+  const mocked = { accessToken: code, refreshToken: "mock", expiresIn: 3600 };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(mocked));
+  url.searchParams.delete("code");
+  url.searchParams.delete("session_state");
+  url.searchParams.delete("iss");
+  window.history.replaceState({}, "", url.toString());
+  return true;
+}
+
 function readAccessToken(): string | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -25,6 +38,10 @@ export default function AuthGate({ children }: AuthGateProps) {
   const [missingConfig, setMissingConfig] = useState(false);
 
   useEffect(() => {
+    if (mockAuthFromCode()) {
+      setAllowed(true);
+      return;
+    }
     const token = readAccessToken();
     if (token) {
       setAllowed(true);

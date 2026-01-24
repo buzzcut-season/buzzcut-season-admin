@@ -37,6 +37,12 @@
   font-size: 0.9rem;
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .metaLabel {
   color: var(--muted);
   text-transform: uppercase;
@@ -68,6 +74,12 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+  }
+
+  .headerRight {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .headerMeta {

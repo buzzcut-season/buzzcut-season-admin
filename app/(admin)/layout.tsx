@@ -1,5 +1,6 @@
 import Sidebar from "../../components/Sidebar";
 import AuthGate from "../../components/AuthGate";
+import UserMenu from "../../components/UserMenu";
 import styles from "./AdminLayout.module.css";
 
 export default function AdminLayout({
@@ -14,16 +15,19 @@ export default function AdminLayout({
           <Sidebar />
         </aside>
         <div className={styles.mainArea}>
-          <header className={`${styles.header} card`}>
-            <div>
-              <span className="badge">Admin</span>
-              <h2>Marketplace control</h2>
-            </div>
+        <header className={`${styles.header} card`}>
+          <div>
+            <span className="badge">Admin</span>
+            <h2>Marketplace control</h2>
+          </div>
+          <div className={styles.headerRight}>
             <div className={styles.headerMeta}>
               <span className={styles.metaLabel}>Environment</span>
               <strong>Staging UI</strong>
             </div>
-          </header>
+            <UserMenu />
+          </div>
+        </header>
           <main className={`${styles.content} page-enter`}>{children}</main>
         </div>
       </div>

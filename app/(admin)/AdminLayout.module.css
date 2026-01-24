@@ -14,7 +14,7 @@
 
 .mainArea {
   display: grid;
-  gap: 8px;
+  gap: 0;
 }
 
 .header {

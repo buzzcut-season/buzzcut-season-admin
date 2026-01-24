@@ -15,7 +15,7 @@ export default function AdminLayout({
       <div className={styles.mainArea}>
           <header className={`${styles.header} card`}>
             <div className={styles.headerTitle}>
-              <span className="badge">Admin</span>
+              <span className={styles.headerBadge}>Admin</span>
               <h2>Marketplace control</h2>
             </div>
           <div className={styles.headerRight}>

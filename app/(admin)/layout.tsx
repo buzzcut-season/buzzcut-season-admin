@@ -15,19 +15,22 @@ export default function AdminLayout({
           <Sidebar />
         </aside>
         <div className={styles.mainArea}>
-        <header className={`${styles.header} card`}>
-          <div>
-            <span className="badge">Admin</span>
-            <h2>Marketplace control</h2>
-          </div>
-          <div className={styles.headerRight}>
-            <div className={styles.headerMeta}>
-              <span className={styles.metaLabel}>Environment</span>
-              <strong>Staging UI</strong>
+          <header className={`${styles.header} card`}>
+            <div className={styles.headerTitle}>
+              <span className="badge">Admin</span>
+              <div>
+                <h2>Marketplace control</h2>
+                <p className={styles.headerSubtitle}>Live ops cockpit</p>
+              </div>
             </div>
-            <UserMenu />
-          </div>
-        </header>
+            <div className={styles.headerRight}>
+              <div className={styles.headerMeta}>
+                <span className={styles.metaLabel}>Environment</span>
+                <strong>Staging UI</strong>
+              </div>
+              <UserMenu />
+            </div>
+          </header>
           <main className={`${styles.content} page-enter`}>{children}</main>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import styles from "./UserMenu.module.css";
 
 const STORAGE_KEY = "buzzcut.auth";
 const LOGOUT_URL = process.env.NEXT_PUBLIC_KEYCLOAK_LOGOUT_URL;
@@ -18,21 +19,15 @@ export default function UserMenu() {
   }, []);
 
   return (
-    <div className="card" style={{ padding: "10px 14px" }}>
-      <div style={{ display: "grid", gap: 6 }}>
-        <span className="badge">Admin</span>
-        <strong style={{ fontSize: "0.95rem" }}>Admin User</strong>
-        <span className="muted" style={{ fontSize: "0.8rem" }}>
-          admin@buzzcut-season.ru
-        </span>
+    <div className={styles.userMenu}>
+      <div className={styles.avatar}>AU</div>
+      <div className={styles.userInfo}>
+        <span className={styles.userLabel}>Signed in</span>
+        <strong className={styles.userName}>Admin User</strong>
+        <span className={styles.userEmail}>admin@buzzcut-season.ru</span>
       </div>
-      <button
-        className="btn"
-        onClick={handleLogout}
-        style={{ marginTop: 10, width: "100%" }}
-        type="button"
-      >
-        Logout
+      <button className={styles.logoutButton} onClick={handleLogout} type="button">
+        Log out
       </button>
     </div>
   );

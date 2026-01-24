@@ -21,11 +21,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
   padding: 20px 26px;
+  border: 1px solid rgba(236, 72, 153, 0.18);
+  background:
+    radial-gradient(320px circle at 15% 20%, rgba(236, 72, 153, 0.12), transparent 60%),
+    linear-gradient(140deg, rgba(29, 18, 39, 0.95), rgba(12, 10, 18, 0.95));
+}
+
+.headerTitle {
+  display: grid;
+  gap: 8px;
+}
+
+.headerTitle h2 {
+  margin: 0;
+}
+
+.headerSubtitle {
+  margin: 2px 0 0;
+  color: rgba(244, 244, 247, 0.7);
+  font-size: 0.9rem;
 }
 
 .header h2 {
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   font-family: var(--font-serif), "Times New Roman", serif;
   font-size: 1.8rem;
 }

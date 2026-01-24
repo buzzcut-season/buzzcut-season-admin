@@ -9,7 +9,10 @@ const jwks = issuer
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/admin/login") || pathname.startsWith("/api/auth")) {
+  if (
+    pathname.startsWith("/admin/login") ||
+    pathname.startsWith("/api/auth")
+  ) {
     return NextResponse.next();
   }
 
@@ -22,7 +25,19 @@ export async function middleware(request: NextRequest) {
   }
 
   const token = request.cookies.get("admin_token")?.value;
-  if (!token || !issuer || !jwks) {
+  const refresh = request.cookies.get("admin_refresh")?.value;
+  if (!issuer || !jwks) {
+    const loginUrl = new URL("/admin/login", request.url);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (!token && refresh) {
+    const refreshUrl = new URL("/api/auth/refresh", request.url);
+    refreshUrl.searchParams.set("next", pathname);
+    return NextResponse.redirect(refreshUrl);
+  }
+
+  if (!token) {
     const loginUrl = new URL("/admin/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
@@ -31,6 +46,11 @@ export async function middleware(request: NextRequest) {
     await jwtVerify(token, jwks, { issuer });
     return NextResponse.next();
   } catch {
+    if (refresh) {
+      const refreshUrl = new URL("/api/auth/refresh", request.url);
+      refreshUrl.searchParams.set("next", pathname);
+      return NextResponse.redirect(refreshUrl);
+    }
     const loginUrl = new URL("/admin/login", request.url);
     return NextResponse.redirect(loginUrl);
   }

@@ -7,7 +7,10 @@ import styles from "./Sidebar.module.css";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/categories", label: "Categories" },
-  { href: "/exchange-rates", label: "Exchange rates" }
+  { href: "/orders", label: "Orders" },
+  { href: "/payments", label: "Payments" },
+  { href: "/exchange-rates", label: "FX rates" },
+  { href: "/support", label: "Support" }
 ];
 
 export default function Sidebar() {

@@ -16,15 +16,11 @@ export default function AdminLayout({
           <header className={`${styles.header} card`}>
             <div className={styles.headerTitle}>
               <span className={styles.headerBadge}>Admin</span>
-              <h2>Marketplace control</h2>
+              <h2>Buzzcut Season Marketplace</h2>
             </div>
-          <div className={styles.headerRight}>
-            <div className={styles.headerMeta}>
-              <span className={styles.metaLabel}>Environment</span>
-              <strong>Staging UI</strong>
+            <div className={styles.headerRight}>
+              <UserMenu />
             </div>
-            <UserMenu />
-          </div>
         </header>
         <main className={`${styles.content} page-enter`}>{children}</main>
       </div>

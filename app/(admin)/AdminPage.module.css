@@ -34,6 +34,142 @@
   gap: 12px;
 }
 
+.statGrid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.statCard {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.statDelta {
+  font-size: 0.8rem;
+  color: rgba(125, 211, 252, 0.8);
+}
+
+.actionStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.actionButtonPrimary {
+  border-color: rgba(236, 72, 153, 0.35);
+  background: rgba(236, 72, 153, 0.12);
+}
+
+.actionButtonPrimary:hover {
+  background: rgba(236, 72, 153, 0.2);
+}
+
+.activityList {
+  display: grid;
+  gap: 10px;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.listMeta {
+  display: grid;
+  gap: 4px;
+}
+
+.listTitle {
+  font-weight: 600;
+}
+
+.listSubtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.activityMeta {
+  display: grid;
+  gap: 4px;
+}
+
+.activityTitle {
+  font-weight: 600;
+}
+
+.activityTime {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.statusTag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.helperNote {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
 .card h3 {
   margin: 0;
   font-size: 1.1rem;

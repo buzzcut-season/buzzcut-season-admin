@@ -18,7 +18,6 @@ export default function AdminLayout({
             <span className="badge">Admin</span>
             <div>
               <h2>Marketplace control</h2>
-              <p className={styles.headerSubtitle}>Live ops cockpit</p>
             </div>
           </div>
           <div className={styles.headerRight}>

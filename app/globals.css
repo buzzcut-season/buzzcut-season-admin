@@ -1,0 +1,169 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #07060a;
+  --surface: rgba(17, 12, 22, 0.92);
+  --ink: #f4f4f7;
+  --muted: rgba(244, 244, 247, 0.65);
+  --accent: #ec4899;
+  --accent-deep: #a855f7;
+  --teal: #7dd3fc;
+  --border: rgba(255, 255, 255, 0.16);
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans), "SF Pro Text", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(900px circle at 15% 5%, rgba(255, 105, 180, 0.18), transparent 55%),
+    radial-gradient(800px circle at 85% 20%, rgba(168, 85, 247, 0.18), transparent 55%),
+    radial-gradient(700px circle at 35% 90%, rgba(236, 72, 153, 0.12), transparent 60%),
+    linear-gradient(to bottom, #07060a, #07060a);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  position: relative;
+}
+
+.page-enter {
+  animation: page-enter 0.45s ease-out both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px),
+    linear-gradient(180deg, rgba(36, 24, 46, 0.92), rgba(22, 16, 30, 0.95));
+  background-size: 7px 7px, 11px 11px, 100% 100%;
+  background-position: 0 0, 3px 2px, 0 0;
+}
+
+.card-accent {
+  border-color: rgba(236, 72, 153, 0.35);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px),
+    linear-gradient(180deg, rgba(72, 22, 54, 0.9), rgba(28, 14, 26, 0.95));
+  background-size: 7px 7px, 11px 11px, 100% 100%;
+  background-position: 0 0, 3px 2px, 0 0;
+}
+
+.badge,
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(244, 244, 247, 0.85);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+  border-color: rgba(236, 72, 153, 0.3);
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.25), rgba(168, 85, 247, 0.25));
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.35), rgba(168, 85, 247, 0.35));
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--ink);
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
+}
+
+.muted {
+  color: var(--muted);
+}

@@ -13,13 +13,11 @@ export default function AdminLayout({
         <Sidebar />
       </aside>
       <div className={styles.mainArea}>
-        <header className={`${styles.header} card`}>
-          <div className={styles.headerTitle}>
-            <span className="badge">Admin</span>
-            <div>
+          <header className={`${styles.header} card`}>
+            <div className={styles.headerTitle}>
+              <span className="badge">Admin</span>
               <h2>Marketplace control</h2>
             </div>
-          </div>
           <div className={styles.headerRight}>
             <div className={styles.headerMeta}>
               <span className={styles.metaLabel}>Environment</span>

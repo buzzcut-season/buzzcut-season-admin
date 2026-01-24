@@ -36,16 +36,19 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: rgba(244, 244, 247, 0.55);
+  line-height: 1.1;
 }
 
 .userName {
   font-size: 0.9rem;
   font-weight: 600;
+  line-height: 1.1;
 }
 
 .userEmail {
   font-size: 0.75rem;
   color: rgba(244, 244, 247, 0.6);
+  line-height: 1.1;
 }
 
 .logoutButton {

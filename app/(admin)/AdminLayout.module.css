@@ -21,9 +21,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px 22px;
-  height: 78px;
+  gap: 12px;
+  padding: 10px 18px;
+  height: 64px;
   flex-wrap: nowrap;
   border: 1px solid rgba(236, 72, 153, 0.18);
   background:
@@ -45,7 +45,7 @@
 .header h2 {
   margin: 0;
   font-family: var(--font-serif), "Times New Roman", serif;
-  font-size: 1.55rem;
+  font-size: 1.4rem;
 }
 
 .headerMeta {

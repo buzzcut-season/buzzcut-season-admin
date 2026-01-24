@@ -3,17 +3,17 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 22px;
+  padding: 10px 20px;
 }
 
 .pageHeader h1 {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   font-family: var(--font-serif), "Times New Roman", serif;
   font-size: clamp(2rem, 3vw, 2.6rem);
 }
 
 .pageHeader p {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   color: var(--muted);
   max-width: 560px;
   line-height: 1.6;

@@ -1,6 +1,46 @@
+import { cookies } from "next/headers";
+import CategoriesClient from "./CategoriesClient";
 import styles from "../AdminPage.module.css";
 
-export default function CategoriesPage() {
+type CategoryNode = {
+  id: number;
+  name: string;
+  children: CategoryNode[];
+};
+
+type CategoryTreeResponse = {
+  categories: CategoryNode[];
+};
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.buzzcut-season.ru";
+
+async function fetchCategoryTree() {
+  const token = cookies().get("admin_token")?.value;
+  const response = await fetch(`${API_BASE_URL}/api/v1/categories/tree`, {
+    cache: "no-store",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to load categories: ${response.status}`);
+  }
+
+  const data = (await response.json()) as CategoryTreeResponse;
+  return Array.isArray(data.categories) ? data.categories : [];
+}
+
+export default async function CategoriesPage() {
+  let categories: CategoryNode[] = [];
+  let errorMessage: string | null = null;
+
+  try {
+    categories = await fetchCategoryTree();
+  } catch (error) {
+    errorMessage =
+      error instanceof Error ? error.message : "Failed to load categories.";
+  }
+
   return (
     <>
       <section className={`${styles.pageHeader} card`}>
@@ -8,69 +48,15 @@ export default function CategoriesPage() {
           <span className="badge">Categories</span>
           <h1>Category tree</h1>
           <p>
-            Maintain the hierarchy and create new categories. Data wiring will
-            be added later.
+            Maintain the hierarchy and create new categories.
           </p>
         </div>
       </section>
 
-      <section className={styles.twoColumn}>
-        <div className={`${styles.panel} card`}>
-          <div className={styles.panelHeader}>
-            <h2>Tree placeholder</h2>
-            <span className="badge">UI only</span>
-          </div>
-          <div className={styles.placeholderTree}>
-            <div className={styles.treeRow}>
-              <span className={styles.treeDot} />
-              Root category
-            </div>
-            <div className={styles.treeRow}>
-              <span className={styles.treeDot} />
-              └ Accessories
-            </div>
-            <div className={styles.treeRow}>
-              <span className={styles.treeDot} />
-              └ Apparel
-            </div>
-            <div className={styles.treeRow}>
-              <span className={styles.treeDot} />
-              └ Home goods
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.panel} card`}>
-          <div className={styles.panelHeader}>
-            <h2>Create category</h2>
-          </div>
-          <form className={styles.form}>
-            <label className={styles.field}>
-              Name
-              <input className="input" placeholder="Category name" type="text" />
-            </label>
-            <label className={styles.field}>
-              Slug
-              <input className="input" placeholder="category-slug" type="text" />
-            </label>
-            <label className={styles.field}>
-              Parent ID
-              <select className="input">
-                <option value="">No parent</option>
-                <option value="1">Root category</option>
-                <option value="2">Accessories</option>
-                <option value="3">Apparel</option>
-              </select>
-            </label>
-            <div className={styles.actionRow}>
-              <span className="muted">No API calls yet</span>
-              <button className="btn btn-primary" type="button">
-                Save draft
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+      <CategoriesClient
+        initialCategories={categories}
+        initialError={errorMessage}
+      />
     </>
   );
 }

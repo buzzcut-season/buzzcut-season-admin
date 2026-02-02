@@ -12,11 +12,14 @@ export default function AdminLayout({
       <aside className={styles.sidebarArea}>
         <Sidebar />
       </aside>
-      <div className={styles.mainArea}>
+        <div className={styles.mainArea}>
           <header className={`${styles.header} card`}>
             <div className={styles.headerTitle}>
               <span className={styles.headerBadge}>Admin</span>
-              <h2>Buzzcut Season Marketplace</h2>
+              <div className={styles.headerText}>
+                <h2>Buzzcut Season Marketplace</h2>
+                <p className={styles.headerSubtitle}>Admin console</p>
+              </div>
             </div>
             <div className={styles.headerRight}>
               <UserMenu />

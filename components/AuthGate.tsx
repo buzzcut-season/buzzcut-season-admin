@@ -7,7 +7,6 @@ type AuthGateProps = {
 };
 
 const STORAGE_KEY = "buzzcut.auth";
-const KEYCLOAK_AUTH_URL = process.env.NEXT_PUBLIC_KEYCLOAK_AUTH_URL;
 
 function mockAuthFromCode() {
   const url = new URL(window.location.href);
@@ -35,7 +34,6 @@ function readAccessToken(): string | null {
 
 export default function AuthGate({ children }: AuthGateProps) {
   const [allowed, setAllowed] = useState(false);
-  const [missingConfig, setMissingConfig] = useState(false);
 
   useEffect(() => {
     if (mockAuthFromCode()) {
@@ -47,22 +45,14 @@ export default function AuthGate({ children }: AuthGateProps) {
       setAllowed(true);
       return;
     }
-    if (KEYCLOAK_AUTH_URL) {
-      window.location.replace(KEYCLOAK_AUTH_URL);
-    } else {
-      setMissingConfig(true);
-    }
+    window.location.replace("/api/auth/login");
   }, []);
 
   if (!allowed) {
     return (
       <div className="card" style={{ margin: "3rem auto", maxWidth: 560 }}>
         <h2>Authorization required</h2>
-        {missingConfig ? (
-          <p>Missing `NEXT_PUBLIC_KEYCLOAK_AUTH_URL`.</p>
-        ) : (
-          <p>Redirecting to Keycloak...</p>
-        )}
+        <p>Redirecting to Keycloak...</p>
       </div>
     );
   }
